@@ -1,0 +1,22 @@
+// ==UserScript==
+// You must put on this code on Tampermonkey or another userscript manager 
+// @name         Auto approve new members group
+// @version      0.01
+// @description  Let it run and all askeds to join in your group be approved.
+// @author       Gabriel HelenoS
+// @match        DELETE THESE CAPITAL LETTERS AND PUT HERE THE URL OF THE PAGE OF APPROVING LIKE https://www.facebook.com/groups/GROUPID/requests
+
+// ==/UserScript==
+
+setTimeout(function(){
+    var tudo = document.querySelectorAll('div._42ef div');
+    //alert(tudo[1].innerText);
+    var clicar = tudo[1].querySelectorAll('div._4wsp button');
+    clicar[0].click();
+}, 120000);
+
+// 120000 is the time of interval; 1000 = 1 second
+// If you take out the forward slash comment, the alert will displays the relevant public information of the profile and the asks answered collected for var tudo on line 11
+
+
+// New improved versions is going to come!
