@@ -1,0 +1,34 @@
+// ==UserScript==
+// @name         Auto Accept New Members
+// @namespace    http://tampermonkey.net/
+// @version      2.0
+// @description  try to take over the world!
+// @author       You
+// @match        LINK
+// @grant        none
+// ==/UserScript==
+
+setTimeout(function(){
+alert("Código iniciou!"); //Aviso inicial 
+var tudo = document.querySelectorAll('div._42ef div')[1].innerText; //Seleciona todos os dados do perfil que foram carregados
+var infos = 'Arquivo criado a partir do grupo GRW'; //Informação de origem que vai para o arquivo, é opicional
+array= [{Origem:infos, Informações:tudo}]; //Junta a informação de origem do arquivo com as informações pessoais
+
+//Cria arquivo
+function dl(array,filename){
+var b=document.createElement('a');
+b.download=filename;
+b.textContent=filename;
+b.href='data:application/json;base64,'+window.btoa(unescape(encodeURIComponent(JSON.stringify(array))));
+return b;
+}
+document.body.appendChild(dl(array,'my.json'));
+
+var clicar = document.querySelectorAll('a[download="my.json"]')[0]; //Seleciona o link do arquivo criado
+clicar.click(); //Clica no link para download do arquivo criado
+
+    var botao = document.querySelectorAll('div._42ef div'); //Seleciona novamente as informações todas
+    clic = botao[1].querySelectorAll('div._4wsp button'); // Seleciona o botão de aprovação do membro
+    clic[0].click(); //Clica no botão de aprovação do membro
+
+}, 10000); //Define o tempo inicial de atraso para o script começar. 1000 = 1 segundo
